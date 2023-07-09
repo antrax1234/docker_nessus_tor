@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  nessus:
+    image: antraxx1234/nessus_server
+    restart: always
+    ports:
+      - 8834:8834
+      - 5000:8888  
+    volumes:
+      - nessus_data:/opt/nessus
+      - ./auditorias:/opt/nessus/auditorias 
+    cap_add:
+      - NET_ADMIN
+volumes:
+  nessus_data:
+    driver: local
